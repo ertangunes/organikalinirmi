@@ -1,4 +1,4 @@
-// Vercel'i guncellemek icin yorum
+
 export default async function handler(req, res) {
   try {
     if (req.method !== "POST") {
@@ -21,7 +21,7 @@ Format:
 
 Ürün: ${product}
 `;
-// YENİ HALİ (BUNU KOPYALAYIN)
+// Vercel'i yeni anahtari kullanmaya zorla
 const response = await fetch(
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.0-pro:generateContent",
 // ...
