@@ -20,7 +20,15 @@ export default function Home() {
       });
 
       const data = await res.json();
-      setResult(data.result || "Bir şeyler ters gitti.");
+
+if (data.result) {
+  setResult(data.result);
+} else if (data.error || data.detail) {
+  setResult(`Hata: ${data.error || ""}\n${data.detail || ""}`);
+} else {
+  setResult("Bir şeyler ters gitti.");
+}
+
     } catch (err) {
       setResult("Sunucu hatası, lütfen tekrar dene.");
     } finally {
