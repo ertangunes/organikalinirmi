@@ -1,7 +1,7 @@
 // BU KODU KOPYALAYIP TAMAMEN ESKİSİNİN YERİNE YAPIŞTIRIN
 
 // Bu ayarlar Google'ın Vertex AI için zorunlu kıldığı ayarlardır
-const GOOGLE_PROJECT_ID = "sitemin-gemini-projesi"; // 1. BU SATIRI DEĞİŞTİR
+const GOOGLE_PROJECT_ID = "academic-emblem-478516-e7"; // 1. BU SATIRI DEĞİŞTİR
 const GOOGLE_LOCATION = "us-central1"; // Bu satıra DOKUNMA
 
 export default async function handler(req, res) {
