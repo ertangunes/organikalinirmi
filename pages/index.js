@@ -24,9 +24,13 @@ export default function Home() {
 if (data.result) {
   setResult(data.result);
 } else if (data.error || data.detail) {
-  setResult(`Hata: ${data.error || ""}\n${data.detail || ""}`);
+  setResult(
+    `Hata:\n${data.error ? data.error + "\n" : ""}${
+      data.detail ? data.detail : ""
+    }`
+  );
 } else {
-  setResult("Bir şeyler ters gitti.");
+  setResult("Şu anda cevap üretirken bir sorun oluştu.");
 }
 
     } catch (err) {
