@@ -4,10 +4,13 @@ export default async function handler(req, res) {
     const apiKey = process.env.GOOGLE_API_KEY;
 
     if (!apiKey) {
-      return res.status(500).json({ error: "API Key bulunamadi!" });
+      // Hata olsa bile 200 gönder (hile)
+      return res.status(200).json({ 
+        HATA_BU: "API Key bulunamadi!",
+        HATA_DETAYI: "Vercel'de GOOGLE_API_KEY bulunamiyor." 
+      });
     }
 
-    // Google'a hangi modellerin olduğunu soruyoruz
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`,
       {
@@ -21,20 +24,21 @@ export default async function handler(req, res) {
     const text = await response.text();
 
     if (!response.ok) {
-      return res.status(500).json({
-        error: "Google'dan model listesi alınamadı.",
-        detail: text,
+      // Hata olsa bile 200 gönder (hile)
+      return res.status(200).json({
+        HATA_BU: "Google'dan model listesi alınamadı.",
+        HATA_DETAYI: text, // Google'dan gelen asıl hata burada
       });
     }
 
-    // Listeyi bize göster
     const data = JSON.parse(text);
     res.status(200).json({ KULLANABILECEGIN_MODELLER: data });
 
   } catch (err) {
-    res.status(500).json({
-      error: "Sunucu hatasi",
-      detail: String(err),
+    // Hata olsa bile 200 gönder (hile)
+    res.status(200).json({
+      HATA_BU: "Sunucu hatasi (catch blogu)",
+      HATA_DETAYI: String(err),
     });
   }
 }
