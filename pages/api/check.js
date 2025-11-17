@@ -46,7 +46,7 @@ Format:
     // YENİ Vertex AI API ADRESİ (Model: gemini-1.5-flash)
     // ÖNEMLİ: URL'de "googleProject" ve "googleLocation" var
     const response = await fetch(
-`https://us-central1-aiplatform.googleapis.com/v1/projects/${GOOGLE_PROJECT_ID}/locations/${GOOGLE_LOCATION}/publishers/google/models/gemini-1.5-flash-001:generateContent`,
+`https://us-central1-aiplatform.googleapis.com/v1/projects/${GOOGLE_PROJECT_ID}/locations/${GOOGLE_LOCATION}/publishers/google/models/gemini-1.5-flash-001:generateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: {
